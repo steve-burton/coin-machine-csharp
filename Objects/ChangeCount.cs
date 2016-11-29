@@ -10,10 +10,12 @@ namespace ChangeCount.Objects
     private int _nickels;
     private int _pennies;
     private int _inputTotal;
+    private int _total;
 
     public CoinMachine(int input)
     {
       _inputTotal = input;
+      _total = input;
     }
 
     public void CountCoins()
@@ -52,6 +54,10 @@ namespace ChangeCount.Objects
     public int GetQuarters()
     {
       return _quarters;
+    }
+    public int GetTotal()
+    {
+      return _total;
     }
   }
 }
