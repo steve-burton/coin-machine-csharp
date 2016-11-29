@@ -19,11 +19,22 @@
       @if (@Model != null)
       {
         <div class="results">
-        <p>Total cents: @Model.GetTotal()</p>
-        <p>Quarters: @Model.GetQuarters()</p>
-        <p>Dimes: @Model.GetDimes()</p>
-        <p>Nickels: @Model.GetNickels()</p>
-        <p>Pennies: @Model.GetPennies()</p>
+          @if (@Model.BankNotEmpty() == true && @Model.CanMakeChange() == true)
+          {
+          <p>Total cents: @Model.GetTotal()</p>
+          <p>Quarters: @Model.GetQuarters()</p>
+          <p>Dimes: @Model.GetDimes()</p>
+          <p>Nickels: @Model.GetNickels()</p>
+          <p>Pennies: @Model.GetPennies()</p>
+          }
+          @if (@Model.BankNotEmpty() == false)
+          {
+            <p> Sorry! The bank is out of coins. </p>
+          }
+          @if (@Model.CanMakeChange() == false)
+          {
+            <p> Sorry! The bank cannot make change for that amount. </p>
+          }
         </div>
       }
     </div>
