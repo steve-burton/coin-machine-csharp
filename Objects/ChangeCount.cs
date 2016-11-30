@@ -29,6 +29,7 @@ namespace ChangeCount.Objects
 
     public void CountCoins()
     {
+      //temporary banks to see if we have enough coins to make correct change
       int tBankQ = _bankQ;
       int tBankD = _bankD;
       int tBankN = _bankN;
@@ -59,6 +60,7 @@ namespace ChangeCount.Objects
         _inputTotal = _inputTotal - 1;
       }
 
+      //if correct change can be made, subtract values from static banks
       if (_pennies + _nickels * 5 + _dimes * 10 + _quarters * 25 == _total)
       {
         _bankTotal = _bankTotal - _quarters * 25;
@@ -78,15 +80,12 @@ namespace ChangeCount.Objects
       {
         _canMakeChange = false;
       }
-
     }
-
 
     public int GetPennies()
     {
       return _pennies;
     }
-
     public int GetNickels()
     {
       return _nickels;
@@ -111,9 +110,5 @@ namespace ChangeCount.Objects
     {
       return _bankNotEmpty;
     }
-    // public void ResetCanMakeChange()
-    // {
-    //   _canMakeChange = true;
-    // }
   }
 }
